@@ -1,5 +1,4 @@
 {
-  "name": "",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -24,7 +23,8 @@
   "contributors": [],
   "scripts": {
     "dev": "",
-    "test": ""
+    "test": "",
+    "start": "http-server src/frontend -p 3000 -c-1 -o -s"
   },
   "devDependencies": {
     "http-server": "^14.1.1"
