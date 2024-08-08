@@ -1,4 +1,4 @@
-# Garden China Digital Diner
+# Garden China
 ## Project Setup
 To get started with the project, follow these steps:
 1. **Clone the Repository:**
