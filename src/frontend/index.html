@@ -1,24 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Garden China</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="app.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden China Digital Diner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="app.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Garden China!!</h1>
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="dashboard.html">Dashboard</a> |
-            <a href="menu.html">Menu</a> |
-            <a href="history.html">Order History</a>
-        </nav>
-    </header>
-    <main>
-        <p>Welcome to our online ordering system!</p>
-        <button id="testButton" class="btn btn-primary">Click Me</button>
-    </main>
+    <nav>
+        <button id="home">Home</button>
+        <button id="dashboard">Dashboard</button>
+        <button id="menu">Menu</button>
+        <button id="cart">Cart</button>
+        <button id="history">Order History</button>
+    </nav>
+
+    <div id="views">
+
+        <div id="homeView" class="view">
+            <h1>Welcome to Garden China Digital Diner</h1>
+            <p>Experience the best Chinese cuisine in town. Explore our menu and order your favorites today!</p>
+        </div>
+
+        <div id="dashboardView" class="view" style="display:none">
+            <h2>Your Profile</h2>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Profile</button>
+            </form>
+            <p id="profileInfo"></p>
+            <button id="clearProfile" class="btn btn-danger">Clear Profile</button>
+        </div>
+
+        <div id="menuView" class="view" style="display:none">
+            <h2>Menu</h2>
+            <section id="appetizers">
+                <h3>Appetizers</h3>
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span>Egg Roll</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Egg Roll', 2.05)">Add - $2.05</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Shrimp Roll</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Shrimp Roll', 2.25)">Add - $2.25</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Crispy Vegetable Spring Rolls (2)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Crispy Vegetable Spring Rolls (2)', 3.35)">Add - $3.35</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Fried Wonton (10)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Fried Wonton (10)', 5.95)">Add - $5.95</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Cheese Wonton (8)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Cheese Wonton (8)', 6.55)">Add - $6.55</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Boneless Spare Ribs (Small)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Boneless Spare Ribs (Small)', 8.75)">Add - $8.75</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Boneless Spare Ribs (Large)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Boneless Spare Ribs (Large)', 14.95)">Add - $14.95</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>BBQ Spare Ribs (Small)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('BBQ Spare Ribs (Small)', 9.55)">Add - $9.55</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>BBQ Spare Ribs (Large)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('BBQ Spare Ribs (Large)', 17.25)">Add - $17.25</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Chicken Stick (4)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Chicken Stick (4)', 7.35)">Add - $7.35</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Beef Stick (4)</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Beef Stick (4)', 7.35)">Add - $7.35</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Veg. Dumpling (7) - Fried</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Veg. Dumpling (7) - Fried', 7.65)">Add - $7.65</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Veg. Dumpling (7) - Steamed</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Veg. Dumpling (7) - Steamed', 7.65)">Add - $7.65</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Pork Dumpling (7) - Fried</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Pork Dumpling (7) - Fried', 7.65)">Add - $7.65</button>
+                    </li>
+                    <li class="list-group-item">
+                        <span>Pork Dumpling (7) - Steamed</span>
+                        <button class="btn btn-primary btn-sm float-right" onclick="addToCart('Pork Dumpling (7) - Steamed', 7.65)">Add - $7.65</button>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div id="cartView" class="view" style="display:none">
+            <h2>Your Cart</h2>
+            <div id="cart-container"></div>
+        </div>
+
+        <div id="historyView" class="view" style="display:none">
+            <h2>Order History</h2>
+            <p>Your past orders will be displayed here.</p>
+
+        </div>
+    </div>
 </body>
 </html>
