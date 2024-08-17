@@ -1,17 +1,10 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import Database from './database.js';
 
-// Setup __dirname for ES Modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 const app = express();
-const PORT = process.env.PORT || 3000;
 
 // Serve static files from the 'frontend' directory
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static('../frontend'));
 
 // Add or update a cart item
 app.post('/cartItem', async (req, res) => {
@@ -115,6 +108,6 @@ app.delete('/cartItem', async (req, res) => {
 });
 
 // Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+app.listen(3000, () => {
+    console.log(`Server is running on port 3000`);
 });
